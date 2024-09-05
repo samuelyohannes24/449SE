@@ -1,0 +1,36 @@
+import unittest
+
+# Example Widget class for demonstration
+class Widget:
+    def __init__(self, name, width=50, height=50):
+        self.name = name
+        self._width = width
+        self._height = height
+
+    def size(self):
+        return (self._width, self._height)
+
+    def resize(self, width, height):
+        self._width = width
+        self._height = height
+
+class WidgetTestCase(unittest.TestCase):
+    def setUp(self):
+        # Set up the Widget instance before each test
+        self.widget = Widget('The widget')
+
+    def test_default_widget_size(self):
+        # Test if the default size is (50, 50)
+        self.assertEqual(self.widget.size(), (50, 50), 'Incorrect default size')
+
+    def test_widget_resize(self):
+        # Test resizing the widget
+        self.widget.resize(100, 150)
+        self.assertEqual(self.widget.size(), (100, 150), 'Wrong size after resize')
+
+# Main function to run tests
+def main():
+    unittest.main()
+
+if __name__ == '__main__':
+    main()
